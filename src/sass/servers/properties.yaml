@@ -1,0 +1,11 @@
+name: Servers
+description: 'sets the appearance of the Servers/Guilds sidebar'
+components:
+  - $oneof:
+    - $ref: ./alpha
+    - $ref: ./blur
+    - name: Transparent
+      description: transparent sidebar
+      path: ./transparent.scss
+    - name: Classic
+      description: the classic unchanged appearance of discord

@@ -1,0 +1,8 @@
+- name: modern
+  description: uses Nunito as primary font and Roboto Mono as monospaced
+  path: ./modern.scss
+  order: 0
+- name: comfortable
+  description: uses Comfortaa as primary font and Source Code pro as monospaced
+  path: ./comfortable.scss
+  order: 0

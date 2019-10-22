@@ -1,0 +1,47 @@
+.da-content,
+.da-base,
+.da-sidebar :not(.da-avatar),
+.da-channelTextArea>.da-inner.da-flex>.da-flex,
+.da-scroller,
+.da-sidebar,
+.da-guilds,
+.da-chat>.da-themed,
+.da-title,
+.da-titleBar{
+    background: none;
+}
+
+.da-scorller::-webkit-scrollbar {
+    opacity: 0.2;
+}
+
+.da-chat {
+    border-top-left-radius: 16px;
+}
+
+.da-chat,
+.da-search>.da-searchBar {
+    background-color: rgba(0,0,0,.25) !important;
+}
+
+.da-channelTextArea>.da-inner.da-flex {
+    background-color: rgba(0,0,0,.5);
+}
+
+.da-bg {
+    background-image:
+        url(http://kouna.io/kouna/iPad/discord/background.png),
+        url(http://kouna.io/kouna/iPad/discord/background.jpg),
+        url(http://kouna.io/kouna/iPad/discord/background.gif);
+    background-position: 50% 50%;
+    background-size: cover;
+    filter: brightness(25%);
+}
+
+.da-children::after {
+    display: none;
+}
+
+.da-name {
+    text-shadow: 0 0 1px rgba(0,0,0,.8);
+}

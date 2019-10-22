@@ -1,0 +1,25 @@
+name: blur
+description: creates a blur in the background
+components:
+  - $oneof:
+    - name: Transparent
+      description: transparent sidebar with blurred background
+      path: ./transparent.scss
+      order: 0
+    - name: Custom
+      description: custom colored sidebar with blurred background
+      variables:
+        - name: server-blur-color
+          default: '#27373f'
+        - name: server-blur-color-opacity
+          default: '0.5'
+        - name: server-blur-radius
+          default: '5px'
+    - name: Dark
+      description: dark sidebar with blurred background
+      path: ./dark.scss
+      order: 2
+    - name: Light
+      description: light sidebar with blurred background
+      path: ./light.scss
+      order: 2

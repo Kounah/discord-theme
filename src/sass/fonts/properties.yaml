@@ -1,0 +1,7 @@
+name: fonts
+description: everything font related
+components:
+  - $ref: ./family
+    order: 0
+  - $ref: ./size
+    order: 1

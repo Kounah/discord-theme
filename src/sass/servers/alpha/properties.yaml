@@ -1,0 +1,21 @@
+name: Servers/Alpha
+description: alpha-colored sidebar
+components:
+  - $oneof:
+    - name: Custom
+      description: custom colored alpha
+      variables:
+        - name: server-alpha-color
+          default: '#27373f'
+        - name: server-alpha-color-opacity
+          default: '0.5'
+      path: ./custom.scss
+      order: 0
+    - name: Dark
+      description: dark alpha
+      path: ./dark.scss
+      order: 1
+    - name: Dark
+      description: dark alpha
+      path: ./dark.scss
+      order: 1

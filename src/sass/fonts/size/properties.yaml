@@ -1,0 +1,5 @@
+components:
+  - name: normal
+    description: the normal text size of discord
+    path: ./normal.scss
+    order: 0
