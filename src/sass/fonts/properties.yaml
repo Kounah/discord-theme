@@ -1,7 +1,7 @@
-name: fonts
+name: Fonts
 description: everything font related
 components:
-  - $ref: ./family
+  - $ref: family
     order: 0
-  - $ref: ./size
+  - $ref: size
     order: 1

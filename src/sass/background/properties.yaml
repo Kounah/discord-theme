@@ -1,0 +1,17 @@
+name: Background
+description: Want some Image as Discord-App Background? Here you go.
+components:
+  - name: Custom Image
+    $ref: image.scss
+    variables:
+      - name: background-url
+        default: ''
+      - name: background-brightness
+        default: '100%'
+      - name: background-hue-rotate
+        default: '0deg'
+      - name: background-blur
+        default: '0px'
+      - name: background-saturation
+        default: '100%'
+    order: 0

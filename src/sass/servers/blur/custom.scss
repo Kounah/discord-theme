@@ -1,0 +1,36 @@
+.da-guilds {
+  &::before {
+    content: '';
+    position: absolute;
+    top: (-$server-blur-radius);
+    left: (-$server-blur-radius);
+    bottom: (-$server-blur-radius);
+    right: (-$server-blur-radius);
+    background-color: opacify($server-blur-color, $server-blur-color-opacity);
+    background-image: url($background-url);
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-blend-mode: $server-blur-background-blend-mode;
+    filter: blur($server-blur-radius), $server-blur-filter;
+  }
+
+  .da-expandedFolderBackground {
+    overflow: hidden;
+    &::before {
+      content: '';
+      position: absolute;
+      top: (-$server-folder-blur-radius);
+      left: (-$server-folder-blur-radius);
+      bottom: (-$server-folder-blur-radius);
+      right: (-$server-folder-blur-radius);
+      background-color: opacify($server-folder-blur-color, $server-folder-blur-color-opacity);
+      background-image: url($background-url);
+      background-attachment: fixed;
+      background-position: 50% 50%;
+      background-size: cover;
+      background-blend-mode: $server-folder-blur-background-blend-mode;
+      filter: blur($server-folder-blur-radius), $server-folder-blur-filter;
+    }
+  }
+}

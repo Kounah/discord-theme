@@ -1,0 +1,12 @@
+$server-blur-color: black;
+$server-blur-color-opacity: 0.125;
+$server-blur-radius: 2px;
+$server-blur-filter: saturate(110%);
+$server-blur-background-blend-mode: darken;
+$server-folder-blur-color: black;
+$server-folder-blur-color-opacity: 0.25;
+$server-folder-blur-radius: 4px;
+$server-folder-blur-filter: saturate(120%);
+$server-folder-blur-background-blend-mode: darken;
+
+@import 'custom';

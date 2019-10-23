@@ -1,11 +1,19 @@
 name: Servers
 description: 'sets the appearance of the Servers/Guilds sidebar'
 components:
-  - $oneof:
-    - $ref: ./alpha
-    - $ref: ./blur
-    - name: Transparent
-      description: transparent sidebar
-      path: ./transparent.scss
-    - name: Classic
-      description: the classic unchanged appearance of discord
+  - name: Theme
+    oneof: true
+    order: 0
+    components:
+      - $ref: alpha
+      - $ref: blur
+      - name: Transparent
+        description: transparent sidebar
+        $ref: transparent.scss
+  - name: Rounded Corners
+    description: > 
+    makes the top and bottom right corner of the guilds view round
+    recommended to use with blur or alpha
+    $ref: round-corner.scss
+    optional: true
+    order: 1

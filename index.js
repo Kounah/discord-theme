@@ -1,7 +1,7 @@
-const sass = require('node-sass');
-const path = require('path');
-const fs = require('fs-extra');
+const Component = require('./src/lib/Component');
 
-let options = fs
-  .readdirSync(path.join(__dirname, './src/sass'))
-  .map(f => path.join(__dirname, './src/sass'))
+const index = new Component('src/sass', __dirname, {
+  isIndex: true
+});
+
+index.build().then(result => console.log(result)).catch(err => console.error(err));

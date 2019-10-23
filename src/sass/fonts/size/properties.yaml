@@ -1,5 +1,7 @@
+name: Size
+description: the font size
 components:
-  - name: normal
-    description: the normal text size of discord
-    path: ./normal.scss
+  - name: Normal
+    description: The normal text size of discord
+    $ref: normal.scss
     order: 0
