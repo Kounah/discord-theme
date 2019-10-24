@@ -1,10 +1,17 @@
 .da-bg {
-  background: $background-url;
-  background-position: 50% 50%;
-  background-size: cover;
-  background-attachment: fixed;
-  filter: blur($background-blur)
-    brightness($background-brightness)
-    hue-rotate($background-hue-rotate)
-    saturate($background-saturation);
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: (-$background-blur);
+    left: (-$background-blur);
+    bottom: (-$background-blur);
+    right: (-$background-blur);
+    background-color: opacify($background-color, $background-color-opacity);
+    background-image: $background-image;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: blur($background-blur) $background-filter;
+  }
 }

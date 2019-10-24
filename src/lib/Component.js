@@ -1,173 +1,16 @@
-const sass = require('node-sass');
 const path = require('path');
 const fs = require('fs-extra');
-const os = require('os');
 const YAML = require('yaml');
 
 /**@typedef {('module'|'content')} ComponentType */
 /**
  * @typedef {Object} Variable
  * @prop {string} name
+ * @prop {string} description
+ * @prop {string} format
  * @prop {any} default
  * @prop {any} value
  */
-
-/**
- * @callback BuilderQueueItemCallback
- * @param {Error} err
- * @param {string} result
- * 
- * @typedef {Object} BuilderQueueItem
- * @prop {Component} comp
- * @prop {BuilderQueueItemCallback} cb
- */
-
-const tmpdir = path.join(os.tmpdir(), 'discord-theme', 'build');
-const tmpdirsrc = path.join(tmpdir, 'src');
-
-fs.mkdirpSync(tmpdir);
-
-class Builder {
-  constructor() {
-    /**@type {Array.<BuilderQueueItem>} */
-    this.queue = [];
-    /**@type {Component} */
-    this.index = undefined;
-    /**@type {Array.<string>} */
-    this.imports = [];
-
-    this.add = this.add.bind(this);
-    this.build = this.build.bind(this);
-    this.next = this.next.bind(this);
-  }
-
-  async build(comp) {
-    
-    if(typeof comp === 'object'
-    && comp !== null
-    && comp instanceof Component) {
-      if(typeof this.index === 'undefined' && !comp.isIndex)
-        throw new Error('cannot start building on a non index component');
-
-      if(!comp.optional || !comp.skipBuild) {
-        if(comp.type === 'module') {
-          if(comp.isIndex) {
-            this.index = comp;
-            this.imports = [];
-            await new Promise((resolve, reject) => {
-              fs.mkdirp(tmpdirsrc, (err) => {
-                if(err) return reject(err);
-                resolve();
-              })
-            })
-          } else await new Promise((resolve, reject) => {
-            fs.mkdirp(path.join(tmpdirsrc, path.relative(this.index.path, comp.path)), (err) => {
-              if(err) return reject(err);
-              resolve(err);
-            });
-          })
-
-          // copy dependencies
-          if(Array.isArray(comp.$dependencies)) {
-            await Promise.all(comp.$dependencies.map(dep => new Promise((resolve, reject) => {
-              let p = path.join(tmpdirsrc, path.relative(this.index.path, dep));
-              let par = path.parse(p);
-              fs.mkdirp(par.dir, (err) => {
-                if(err) return reject(err);
-                fs.copyFile(dep, p, (err) => {
-                  if(err) return reject(err);
-                  resolve();
-                })
-              })
-            })));
-          }
-
-          if(comp.oneof) {
-            await this.build(comp.components[comp.selected]);
-          }
-
-          if(Array.isArray(comp.components)) {
-            await Promise.all(comp.components.map(c => this.build(c)));
-          }
-
-
-          if(comp.isIndex) {
-            let indexData = this.imports
-            .map(imp => {
-              return `@import "${imp.split('"').join('\\"')}";`;
-            }).join('\n');
-            let indexFile = path.join(tmpdirsrc, 'index.scss');
-
-            await new Promise((resolve, reject) => {
-              fs.writeFile(indexFile, indexData, (err) => {
-                if(err) return reject(err);
-                resolve();
-              })
-            });
-
-            let css = await new Promise((resolve, reject) => {
-              sass.render({
-                file: indexFile
-              }, (err, result) => {
-                if(err) return reject(err);
-                resolve(result.css.toString('utf-8'));
-              });
-            });
-
-            await new Promise((resolve, reject) => fs.remove(tmpdirsrc, (err) => {
-              if(err) return reject(err);
-              resolve();
-            }))
-
-            this.index = undefined;
-
-            return css;
-          }
-        } else if(comp.type === 'content') {
-          await new Promise((resolve, reject) => {
-            fs.mkdirp(path.join(tmpdirsrc, path.relative(this.index.path, comp.path)), (err) => {
-              if(err) return reject(err);
-              resolve();
-            })
-          });
-          await new Promise(async (resolve, reject) => {
-            fs.writeFile(path.join(tmpdirsrc, path.relative(this.index.path, comp.path))
-            , await comp.data()
-            , (err) => {
-              if(err) return reject(err);
-              resolve();
-            })
-          });
-          this.imports.push(path.relative(this.index.path, comp.path));
-        }
-      }
-    }
-  }
-
-  next() {
-    if(this.queue.length > 0) {
-      let qi = this.queue.shift();
-      this.build(qi.comp)
-      .then(result => qi.cb(null, result))
-      .catch(err => qi.cb(err, null))
-      .finally(() => this.next());
-    } else {
-      setTimeout(this.next, 500);
-    }
-  }
-
-  add(comp) {
-    return new Promise((resolve, reject) => this.queue.push({
-      comp,
-      cb: (err, result) => {
-        if(err) return reject(err);
-        resolve(result);
-      }
-    }));
-  }
-}
-
-const builder = new Builder();
 
 class Component {
   /**
@@ -188,6 +31,10 @@ class Component {
 
     this._name = comp;
     this._dir = dir;
+
+    if(typeof comp === 'undefined') {
+      this.path = dir;
+    }
 
     /**@type {ComponentType} */
     this.type;
@@ -215,9 +62,14 @@ class Component {
 
         if(stat.isFile()) {
           this.type = 'content';
-          this.content = fs.readFileSync(this.path);
+          this.content = fs.readFileSync(this.path).toString('utf-8');
         }
       } else throw(new Error('Component does not exist: \'' + this.path + '\''));
+    } else {
+      this._properties = props;
+      if(Array.isArray(this._properties.components)) {
+        this.type = 'module';
+      } else this.type = 'content';
     }
 
     if(typeof this._properties === 'object' && this._properties !== null) {
@@ -261,7 +113,9 @@ class Component {
       /**@type {boolean} */
       this.oneof = Boolean(this._properties.oneof);
       /**@type {number} */
-      this.selected = Number(this._properties.selected);
+      this.selected = typeof this._properties.selected === 'number'
+        ? this._properties.selected
+        : 0;
 
       /**@type {Array.<Variable>} */
       this.variables = this._properties.variables;
@@ -271,7 +125,9 @@ class Component {
         this.components = this._properties.components.map(comp => {
           if(typeof comp.$ref === 'string') 
             return new Component(comp.$ref, this.path, comp);
-        }).sort((a, b) => b.order - a.order);
+          
+          return new Component(undefined, this.path, comp)
+        }).sort((a, b) => a.order - b.order);
       }
 
       if(Array.isArray(this._properties.$dependencies)) {
@@ -295,30 +151,28 @@ class Component {
 
   vars() {
     if(Array.isArray(this.variables)) {
-      return this.variables.map(v => `$${v.name}: ${typeof v.value != undefined ? v.value : v.default}`).join('\n');
-    }
+      return this.variables.map(v => {
+        let val = typeof v.value !== 'undefined' ? v.value : v.default;
+        if(typeof v.format === 'string')
+          val = v.format.split('$').join(val);
+        return `$${v.name}: ${val};`;
+      }).join('\n');
+    } else return '';
   }
 
   async data() {
-    let s = `/* Component: '${this.name}' */\n`
-      + `/* Variables */\n${this.vars()}\n`
-      + `/* Style */\n`;
-    
-    s += await new Promise((resolve, reject) => {
-      fs.readFile(this.path, (err, data) => {
-        if(err) return reject(err);
-        resolve(data.toString('utf-8'));
-      });
-    });
+    let s = `${this.vars()}\n`
+      + this.content;
 
     return s;
   }
 
-  async build() {
+  /**
+   * @param {import('./Builder')} builder
+   */
+  async build(builder) {
     return await builder.add(this);
   }
 }
-
-builder.next();
 
 module.exports = Component;

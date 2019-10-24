@@ -4,14 +4,15 @@ components:
   - name: Custom Image
     $ref: image.scss
     variables:
-      - name: background-url
-        default: ''
-      - name: background-brightness
-        default: '100%'
-      - name: background-hue-rotate
-        default: '0deg'
+      - name: background-color
+        default: black
+      - name: background-color-opacity
+        default: '0.1'
+      - name: background-image
+        default: 'http://kouna.io/kouna/work/2019/September/03/looks-cool.jpg'
+        format: 'url($)'
       - name: background-blur
-        default: '0px'
-      - name: background-saturation
-        default: '100%'
+        default: 0px
+      - name: background-filter
+        default: saturate(110%)
     order: 0

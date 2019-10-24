@@ -1,8 +1,16 @@
-- name: modern
-  description: uses Nunito as primary font and Roboto Mono as monospaced
-  $ref: modern.scss
-  order: 0
-- name: comfortable
-  description: uses Comfortaa as primary font and Source Code pro as monospaced
-  $ref: comfortable.scss
-  order: 0
+name: Family
+description: the font family used
+$dependencies:
+  - _set.scss
+components:
+  - name: Family Set
+    oneof: true
+    components:
+      - name: Comfortable
+        description: uses Comfortaa as primary font and Source Code pro as monospaced
+        $ref: comfortable.scss
+        order: 0
+      - name: Modern
+        description: uses Nunito as primary font and Roboto Mono as monospaced
+        $ref: modern.scss
+        order: 1
