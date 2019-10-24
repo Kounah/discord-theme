@@ -1,4 +1,8 @@
 .da-guilds {
+  &,&>.da-scrollerWrap>.da-scroller {
+    background: none;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -6,13 +10,13 @@
     left: (-$server-blur-radius);
     bottom: (-$server-blur-radius);
     right: (-$server-blur-radius);
-    background-color: opacify($server-blur-color, $server-blur-color-opacity);
-    background-image: url($background-url);
+    background-color: change-color($server-blur-color, $alpha: $server-blur-color-alpha);
+    background-image: $background-image;
     background-attachment: fixed;
     background-position: 50% 50%;
     background-size: cover;
     background-blend-mode: $server-blur-background-blend-mode;
-    filter: blur($server-blur-radius), $server-blur-filter;
+    filter: blur($server-blur-radius) $server-blur-filter;
   }
 
   .da-expandedFolderBackground {
@@ -24,13 +28,13 @@
       left: (-$server-folder-blur-radius);
       bottom: (-$server-folder-blur-radius);
       right: (-$server-folder-blur-radius);
-      background-color: opacify($server-folder-blur-color, $server-folder-blur-color-opacity);
-      background-image: url($background-url);
+      background-color: change-color($server-folder-blur-color, $alpha: $server-folder-blur-color-alpha);
+      background-image: $background-image;
       background-attachment: fixed;
       background-position: 50% 50%;
       background-size: cover;
       background-blend-mode: $server-folder-blur-background-blend-mode;
-      filter: blur($server-folder-blur-radius), $server-folder-blur-filter;
+      filter: blur($server-folder-blur-radius) $server-folder-blur-filter;
     }
   }
 }

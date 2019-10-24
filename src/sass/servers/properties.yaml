@@ -4,6 +4,7 @@ components:
   - name: Theme
     oneof: true
     order: 0
+    selected: 1
     components:
       - $ref: alpha
       - $ref: blur
@@ -11,9 +12,8 @@ components:
         description: transparent sidebar
         $ref: transparent.scss
   - name: Rounded Corners
-    description: > 
-    makes the top and bottom right corner of the guilds view round
-    recommended to use with blur or alpha
+    description: makes the top and bottom right corner of the guilds view round
+      recommended to use with blur or alpha
     $ref: round-corner.scss
     optional: true
     order: 1

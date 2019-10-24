@@ -7,15 +7,19 @@ components:
     variables:
       - name: server-alpha-color
         default: black
-      - name: server-alpha-color-opacity
-        default: '0.5'
+      - name: server-alpha-color-alpha
+        default: 50%
     $ref: custom.scss
     order: 0
   - name: Dark
     description: dark alpha
     $ref: dark.scss
+    $dependencies:
+      - custom.scss
     order: 1
-  - name: Dark
-    description: dark alpha
-    $ref: dark.scss
+  - name: Light
+    description: light alpha
+    $ref: light.scss
+    $dependencies:
+      - custom.scss
     order: 1

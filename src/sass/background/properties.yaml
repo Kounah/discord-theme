@@ -6,8 +6,8 @@ components:
     variables:
       - name: background-color
         default: black
-      - name: background-color-opacity
-        default: '0.1'
+      - name: background-color-alpha
+        default: 10%
       - name: background-image
         default: 'http://kouna.io/kouna/work/2019/September/03/looks-cool.jpg'
         format: 'url($)'

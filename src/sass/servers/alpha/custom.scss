@@ -1,4 +1,4 @@
 .da-guilds,
 .da-expandedFolderBackground {
-  background-color: opacify($server-alpha-color, $server-alpha-color-opacity);
+  background-color: adjust($server-alpha-color, $server-alpha-color-alpha);
 }

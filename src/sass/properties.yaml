@@ -4,8 +4,8 @@ components:
     order: 0
   - $ref: ./background
     order: 1
-  # - $ref: servers
-  #   order: 2
+  - $ref: ./servers
+    order: 2
   # - $ref: directmessages
   #   order: 3
   # - $ref: appbar

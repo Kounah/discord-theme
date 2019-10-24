@@ -1,6 +1,9 @@
 name: Blur
 description: makes the apps background blurry on the server sidebars background
 oneof: true
+selected: 1
+$dependencies:
+  - custom.scss
 components:
   - name: Transparent
     description: transparent sidebar with blurred background
@@ -8,11 +11,12 @@ components:
     order: 0
   - name: Custom
     description: custom colored sidebar with blurred background
+    $ref: custom.scss
     variables:
       - name: server-blur-color
         default: black
-      - name: server-blur-color-opacity
-        default: '0.125'
+      - name: server-blur-color-alpha
+        default: 0.125
       - name: server-blur-radius
         default: 2px
       - name: server-blur-filter
@@ -21,8 +25,8 @@ components:
         default: overlay
       - name: server-folder-blur-color
         default: black
-      - name: server-folder-blur-color-opacity
-        default: '0.25'
+      - name: server-folder-blur-color-alpha
+        default: 0.25
       - name: server-folder-blur-radius
         default: 4px
       - name: server-folder-blur-filter
@@ -32,8 +36,12 @@ components:
   - name: Dark
     description: dark sidebar with blurred background
     $ref: dark.scss
+    $dependencies:
+      - custom.scss
     order: 2
   - name: Light
     description: light sidebar with blurred background
     $ref: light.scss
+    $dependencies:
+      - custom.scss
     order: 2
