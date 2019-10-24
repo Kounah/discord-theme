@@ -6,9 +6,9 @@ components:
     description: custom colored alpha
     variables:
       - name: server-alpha-color
-        default: black
+        default: red
       - name: server-alpha-color-alpha
-        default: 50%
+        default: .2
     $ref: custom.scss
     order: 0
   - name: Dark

@@ -6,6 +6,8 @@ components:
     order: 1
   - $ref: ./servers
     order: 2
+  - $ref: ./sidebar
+    order: 3
   # - $ref: directmessages
   #   order: 3
   # - $ref: appbar

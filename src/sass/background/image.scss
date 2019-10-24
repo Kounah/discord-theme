@@ -7,11 +7,12 @@
     left: (-$background-blur);
     bottom: (-$background-blur);
     right: (-$background-blur);
-    background-color: adjust($background-color, $background-color-alpha);
+    background-color: change-color($background-color, $alpha: $background-color-alpha);
     background-image: $background-image;
     background-position: 50% 50%;
     background-size: cover;
     background-attachment: fixed;
+    background-blend-mode: $background-blend-mode;
     filter: blur($background-blur) $background-filter;
   }
 }

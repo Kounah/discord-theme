@@ -159,6 +159,7 @@ class Builder {
         this.cleanup().then(this.next())
       })
       .catch(err => {
+        console.error(err)
         qi.cb(err, null);
         this.cleanup().then(this.next())
       })

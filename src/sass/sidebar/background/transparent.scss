@@ -1,0 +1,9 @@
+.da-sidebar {
+  &,
+  &>.da-panels,
+  &>.da-container,
+  &>.da-privateChannels,
+  &>.da-privateChannels>.da-scrollerWrap>.da-scroller {
+    background: none;
+  }
+}

@@ -1,0 +1,23 @@
+name: Alpha
+$dependencies:
+  - ../transparent.scss
+components:
+  - oneof: true
+    components:
+      - name: Custom
+        $ref: custom.scss
+        variables:
+          - name: sidebar-channel-transition-duration
+            default: .1s
+          - name: sidebar-channel-color
+            default: black
+          - name: sidebar-channel-color-alpha
+            default: 0
+          - name: sidebar-channel-hover-color
+            default: black
+          - name: sidebar-channel-hover-color-alpha
+            default: .1
+          - name: sidebar-channel-selected-color
+            default: black
+          - name: sidebar-channel-selected-color-alpha
+            default: .2

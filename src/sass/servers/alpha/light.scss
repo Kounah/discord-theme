@@ -1,4 +1,4 @@
-.da-guilds,
-.da-expandedFolderBackground {
-  background-color: adjust(white, 33%);
-}
+$server-alpha-color: white;
+$server-alpha-color-alpha: .2;
+
+@import "custom";

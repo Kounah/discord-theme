@@ -1,0 +1,66 @@
+@import "../transparent.scss";
+
+@mixin --channel-bg {
+  z-index: 1;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: background-color $sidebar-channel-transition-duration ease-in-out;
+    background-color: change-color($sidebar-channel-color, $alpha: $sidebar-channel-color-alpha);
+  }
+}
+
+@mixin --channel-hover-bg {
+  &::before {
+    background-color: change-color($sidebar-channel-hover-color, $alpha: $sidebar-channel-hover-color-alpha);
+  }
+}
+
+@mixin --channel-selected-bg {
+  &::before {
+    background-color: change-color($sidebar-channel-selected-color, $alpha: $sidebar-channel-selected-color-alpha);
+  }
+}
+
+.da-privateChannels .da-channel {
+  &>.da-layout {
+    @include --channel-bg();
+  }
+
+  &:hover {
+    &>.da-layout {
+      @include --channel-hover-bg();
+    }
+  }
+
+  &.da-selected {
+    &>.da-layout {
+      @include --channel-selected-bg();
+    }
+  }
+}
+
+.da-sidebar .da-scroller>.da-containerDefault {
+  &>.da-wrapper>.da-content {
+    @include --channel-bg();
+  }
+
+  &>.da-wrapper:hover {
+    &>.da-content {
+      @include --channel-hover-bg();
+    }
+  }
+
+  &.da-selected {
+    &>.da-wrapper>.da-content {
+      @include --channel-selected-bg();
+    }
+  }
+}

@@ -1,0 +1,4 @@
+name: Sidebar
+components:
+  - $ref: ./channel
+  - $ref: ./background

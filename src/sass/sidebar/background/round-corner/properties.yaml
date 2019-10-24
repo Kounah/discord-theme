@@ -1,0 +1,14 @@
+name: Rounded Corner
+components:
+  - name: Left
+    variables:
+      - name: sidebar-roundCorner-left-radius
+        default: 12px
+    optional: true
+    $ref: left.scss
+  - name: Right
+    variables:
+      - name: sidebar-roundCorner-right-radius
+        default: 12px
+    optional: true
+    $ref: right.scss

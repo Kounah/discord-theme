@@ -1,0 +1,17 @@
+.da-channel {
+  .da-layout {
+    background: none;
+  }
+
+  &:hover {
+    .da-layout {
+      background: none;
+    }
+  }
+
+  &.da-selected {
+    .da-layout {
+      background: none;
+    }
+  }
+}

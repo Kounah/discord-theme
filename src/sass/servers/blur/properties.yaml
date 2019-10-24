@@ -16,7 +16,7 @@ components:
       - name: server-blur-color
         default: black
       - name: server-blur-color-alpha
-        default: 0.125
+        default: .2
       - name: server-blur-radius
         default: 2px
       - name: server-blur-filter
@@ -26,7 +26,7 @@ components:
       - name: server-folder-blur-color
         default: black
       - name: server-folder-blur-color-alpha
-        default: 0.25
+        default: .3
       - name: server-folder-blur-radius
         default: 4px
       - name: server-folder-blur-filter

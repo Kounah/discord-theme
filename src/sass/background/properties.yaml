@@ -7,12 +7,14 @@ components:
       - name: background-color
         default: black
       - name: background-color-alpha
-        default: 10%
+        default: 0
+      - name: background-blend-mode
+        default: overlay
       - name: background-image
-        default: 'http://kouna.io/kouna/work/2019/September/03/looks-cool.jpg'
+        default: 'http://kouna.io/kouna/iPad/discord/background.png'
         format: 'url($)'
       - name: background-blur
         default: 0px
       - name: background-filter
-        default: saturate(110%)
+        default: saturate(100%)
     order: 0

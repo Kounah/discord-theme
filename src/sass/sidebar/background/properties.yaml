@@ -1,0 +1,15 @@
+name: Sidebar
+description: the design of the sidebar
+components:
+  - name: Default
+    order: -1
+    hidden: true
+    $ref: default.scss
+  - oneof: true
+    selected: 1
+    components:
+      - $ref: alpha
+      - $ref: blur
+      - name: Transparent
+        description: transparent sidebar
+        $ref: transparent.scss

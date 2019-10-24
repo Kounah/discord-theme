@@ -1,0 +1,12 @@
+.da-sidebar {
+  border-radius: 0px;
+
+  .da-nameTag {
+    z-index: 1;
+
+    .da-usernameContainer>.da-title,
+    .da-subtext {
+      text-shadow: 0px 1px 1px black;
+    }
+  }
+}

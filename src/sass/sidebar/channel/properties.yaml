@@ -1,0 +1,27 @@
+name: Channel
+components:
+  - $ref: default.scss
+    variables:
+      - name: sidebar-channel-text-color-transition-duration
+        default: .1s
+      - name: sidebar-channel-text-color
+        default: white
+      - name: sidebar-channel-text-color-alpha
+        default: .5
+      - name: sidebar-channel-hover-text-color
+        default: white
+      - name: sidebar-channel-hover-text-color-alpha
+        default: .75
+      - name: sidebar-channel-selected-text-color
+        default: white
+      - name: sidebar-channel-selected-text-color-alpha
+        default: 1
+      - name: sidebar-channel-text-shadow
+        default: none
+  - name: 
+    oneof: true
+    selected: 1
+    components:
+      - $ref: alpha
+      - $ref: blur
+      - $ref: ./transparent.scss

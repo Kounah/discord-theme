@@ -1,0 +1,19 @@
+name: Blur
+$dependencies: 
+  - ../transparent.scss
+components:
+  - oneof: true
+    components:
+      - name: Custom
+        variables:
+          - name: sidebar-blur-color
+            default: black
+          - name: sidebar-blur-color-alpha
+            default: .2
+          - name: sidebar-blur-background-blend-mode
+            default: overlay
+          - name: sidebar-blur-radius
+            default: 2px
+          - name: sidebar-blur-filter
+            default: saturate(90%)
+        $ref: custom.scss

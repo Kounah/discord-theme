@@ -1,0 +1,82 @@
+@import "../transparent.scss";
+
+@mixin --channel-bg {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: ''; 
+    z-index: -1;
+    position: absolute;
+    transition: all $sidebar-channel-transition-duration ease-in-out;
+    top: (-$sidebar-channel-blur-radius);
+    left: (-$sidebar-channel-blur-radius);
+    bottom: (-$sidebar-channel-blur-radius);
+    right: (-$sidebar-channel-blur-radius);
+    background-color: change-color($sidebar-channel-color, $alpha: $sidebar-channel-color-alpha);
+    background-image: $background-image;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+    background-blend-mode: $sidebar-channel-background-blend-mode;
+    filter: blur($sidebar-channel-blur-radius) $sidebar-channel-filter;
+  }
+}
+
+@mixin --channel-hover-bg {
+  &::before {
+    top: (-$sidebar-channel-hover-blur-radius);
+    left: (-$sidebar-channel-hover-blur-radius);
+    bottom: (-$sidebar-channel-hover-blur-radius);
+    right: (-$sidebar-channel-hover-blur-radius);
+    background-color: change-color($sidebar-channel-hover-color, $alpha: $sidebar-channel-hover-color-alpha);
+    filter: blur($sidebar-channel-hover-blur-radius) $sidebar-channel-hover-filter;
+  }
+}
+
+@mixin --channel-selected-bg {
+  &::before {
+    top: (-$sidebar-channel-selected-blur-radius);
+    left: (-$sidebar-channel-selected-blur-radius);
+    bottom: (-$sidebar-channel-selected-blur-radius);
+    right: (-$sidebar-channel-selected-blur-radius);
+    background-color: change-color($sidebar-channel-selected-color, $alpha: $sidebar-channel-selected-color-alpha);
+    filter: blur($sidebar-channel-selected-blur-radius) $sidebar-channel-selected-filter;
+  }
+}
+
+.da-privateChannels .da-channel {
+  &>.da-layout {
+    @include --channel-bg();
+  }
+
+  &:hover {
+    &>.da-layout {
+      @include --channel-hover-bg();
+    }
+  }
+
+  &.da-selected {
+    &>.da-layout {
+      @include --channel-selected-bg();
+    }
+  }
+}
+
+.da-sidebar .da-scroller>.da-containerDefault {
+  &>.da-wrapper>.da-content {
+    @include --channel-bg();
+  }
+
+  &>.da-wrapper:hover {
+    &>.da-content {
+      @include --channel-hover-bg();
+    }
+  }
+
+  &.da-selected {
+    &>.da-wrapper>.da-content {
+      @include --channel-selected-bg();
+    }
+  }
+}

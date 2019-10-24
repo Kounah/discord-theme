@@ -1,0 +1,14 @@
+name: Alpha
+$dependencies: 
+  - ../transparent.scss
+components:
+  - oneof: true
+    components:
+      - name: Custom
+        description: customizable alpha
+        variables:
+          - name: sidebar-alpha-color
+            default: black
+          - name: sidebar-alpha-color-alpha
+            default: .1
+        $ref: custom.scss
