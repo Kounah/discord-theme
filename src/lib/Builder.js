@@ -33,10 +33,13 @@ class Builder {
     this.index = undefined;
     /**@type {Array.<string>} */
     this.imports = [];
+    /**@type {boolean} */
+    this.closing = false;
 
     this.add = this.add.bind(this);
     this.build = this.build.bind(this);
     this.next = this.next.bind(this);
+    this.end = this.end.bind(this);
 
     this.next();
   }
@@ -164,7 +167,8 @@ class Builder {
         this.cleanup().then(this.next())
       })
     } else {
-      setTimeout(this.next, 500);
+      if(!this.closing)
+        setTimeout(this.next, 500);
     }
   }
 
@@ -176,6 +180,10 @@ class Builder {
         resolve(result);
       }
     }));
+  }
+
+  end() {
+    this.closing = true;
   }
 }
 

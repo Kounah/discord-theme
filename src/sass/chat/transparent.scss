@@ -1,0 +1,11 @@
+.da-chat {
+  &, 
+  &> .da-content > .da-chatContent > .da-messagesWrapper > .da-scrollerWrap > .da-scroller,
+  &> .da-title {
+    background: none;
+  }
+
+  .da-members {
+    background: none;
+  }
+}
