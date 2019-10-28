@@ -12,6 +12,10 @@
   color: change-color($sidebar-channel-selected-text-color, $alpha: $sidebar-channel-selected-text-color-alpha);
 }
 
+.da-privateChannels .da-header {
+  @include --channel-text();
+}
+
 .da-privateChannels .da-channel > .da-layout {
   border-radius: 4px;
   overflow: hidden;
@@ -57,20 +61,65 @@
   &:hover>.da-wrapper{
     &>.da-content {
       .da-icon,
-      .da-actionIcon,
       .da-name {
         @include --channel-hover-text;
       }
     }
   }
 
+  &>.da-wrapper>.da-content {
+    .da-actionIcon:hover {
+      @include --channel-hover-text();
+    }
+  }
+
   &.da-selected {
     &>.da-wrapper>.da-content {
       .da-icon,
-      .da-actionIcon,
       .da-name {
         @include --channel-selected-text;
       }
     }
+  }
+}
+
+.da-sidebar .da-containerDefault>.da-wrapper {
+  .da-name,
+  .da-icon,
+  .da-button {
+    @include --channel-text();
+  }
+
+  &:hover {
+    .da-name,
+    .da-icon {
+      @include --channel-hover-text();
+    }
+  }
+
+  .da-button:hover {
+    @include --channel-hover-text();
+  }
+}
+
+.da-voiceUser > .da-content > .da-icons > .da-iconSpacing > .da-icon {
+  @include --channel-text();
+}
+
+.da-sidebar .da-voiceUser {
+  &>.da-content>.da-username {
+    @include --channel-text();
+  }
+}
+
+.da-sidebar .da-voiceUser:hover {
+  &>.da-content>.da-username {
+    @include --channel-hover-text();
+  }
+}
+
+.da-sidebar .da-voiceUser.da-selected {
+  &>.da-content>.da-username {
+    @include --channel-selected-text();
   }
 }

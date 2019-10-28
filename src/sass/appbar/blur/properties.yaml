@@ -1,0 +1,39 @@
+name: Blur
+oneof: true
+selected: 0
+components:
+  - $ref: custom.scss
+    $name: Custom
+    variables:
+      - name: appbar-bg-color
+        default: black
+      - name: appbar-bg-color-alpha
+        default: .75
+      - name: appbar-bg-blend-mode
+        default: overlay
+      - name: appbar-bg-blur
+        default: 4px
+      - name: appbar-bg-filter
+        default: saturate(40%)
+      - name: appbar-btn-color
+        default: black
+      - name: appbar-btn-color-alpha
+        default: .75
+      - name: appbar-btn-blend-mode
+        default: overlay
+      - name: appbar-btn-blur
+        default: 4px
+      - name: appbar-btn-filter
+        default: saturate(75%)
+      - name: appbar-btn-transition-duration
+        default: .1s
+      - name: appbar-btn-hover-color
+        default: black
+      - name: appbar-btn-hover-color-alpha
+        default: 0
+      - name: appbar-btn-hover-blend-mode
+        default: overlay
+      - name: appbar-btn-hover-blur
+        default: 6px
+      - name: appbar-btn-hover-filter
+        default: saturate(125%)

@@ -9,11 +9,11 @@ components:
           - name: sidebar-blur-color
             default: black
           - name: sidebar-blur-color-alpha
-            default: .2
+            default: .5
           - name: sidebar-blur-background-blend-mode
             default: overlay
           - name: sidebar-blur-radius
             default: 2px
           - name: sidebar-blur-filter
-            default: saturate(90%)
+            default: saturate(50%)
         $ref: custom.scss

@@ -1,1 +1,73 @@
-Name: Blur
+name: Blur
+oneof: true
+selected: 0
+components:
+  - $ref: custom.scss
+    name: Custom
+    variables:
+      - name: chat-title-color
+        default: black
+      - name: chat-title-color-alpha
+        default: .5
+      - name: chat-title-blend-mode
+        default: overlay
+      - name: chat-title-blur
+        default: 4px
+      - name: chat-title-filter
+        default: saturate(50%)
+      - name: chat-bg-color
+        default: black
+      - name: chat-bg-color-alpha
+        default: .2
+      - name: chat-bg-blend-mode
+        default: overlay
+      - name: chat-bg-blur
+        default: 1px
+      - name: chat-bg-filter
+        default: saturate(90%)
+      - name: chat-mem-color
+        default: black
+      - name: chat-mem-color-alpha
+        default: .2
+      - name: chat-mem-blend-mode
+        default: overlay
+      - name: chat-mem-blur
+        default: 1px
+      - name: chat-mem-filter
+        default: saturate(90%)
+      - name: chat-input-color
+        default: black
+      - name: chat-input-color-alpha
+        default: .4
+      - name: chat-input-blend-mode
+        default: overlay
+      - name: chat-input-blur
+        default: 2px
+      - name: chat-input-filter
+        default: saturate(50%)
+      - name: chat-input-transition-duration
+        default: .1s
+      - name: chat-input-placeholder-color
+        default: white
+      - name: chat-input-placeholder-color-alpha
+        default: .5
+      - name: chat-input-active-color
+        default: white
+      - name: chat-input-active-color-alpha
+        default: 0
+      - name: chat-input-active-blend-mode
+        default: overlay
+      - name: chat-input-active-blur
+        default: 4px
+      - name: chat-input-active-filter
+        default: saturate(115%)
+      - name: chat-input-hover-color
+        default: white
+      - name: chat-input-hover-color-alpha
+        default: 0
+      - name: chat-input-hover-blend-mode
+        default: overlay
+      - name: chat-input-hover-blur
+        default: 6px
+      - name: chat-input-hover-filter
+        default: saturate(125%)

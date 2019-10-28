@@ -8,4 +8,10 @@
   .da-members {
     background: none;
   }
+
+  .da-channelTextArea {
+    &> .da-inner {
+      background: none;
+    }
+  }
 }

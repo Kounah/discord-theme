@@ -1,0 +1,149 @@
+@mixin chat_blur_main(
+  $bg_img: none, 
+  $bg_color: transparent, 
+  $bg_blendmode: overlay,
+  $blur: 0px,
+  $filter: '',
+  $transition_duration: .2s) {
+
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: (-$blur);
+      left: (-$blur);
+      bottom: (-$blur);
+      right: (-$blur);
+      background-color: $bg_color;
+      background-image: $bg_img;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-blend-mode: $bg_blendmode;
+      filter: blur($blur) $filter;
+      transition: all $transition_duration ease-in-out;
+    }
+}
+
+@mixin chat_blur_scnd(
+  $bg_img: none, 
+  $bg_color: transparent, 
+  $bg_blendmode: overlay,
+  $blur: 0px,
+  $filter: '',
+  $transition_duration: .2s) {
+
+    &::before {
+      top: (-$blur);
+      left: (-$blur);
+      bottom: (-$blur);
+      right: (-$blur);
+      background-color: $bg_color;
+      background-image: $bg_img;
+      background-blend-mode: $bg_blendmode;
+      filter: blur($blur) $filter;
+    }
+}
+
+/*
+
+$chat-title-color
+$chat-title-color-alpha
+$chat-title-blend-mode
+$chat-title-blur
+$chat-title-blur
+
+$chat-bg-color
+$chat-bg-color-alpha
+$chat-bg-blend-mode
+$chat-bg-blur
+$chat-bg-filter
+
+$chat-mem-color
+$chat-mem-color-alpha
+$chat-mem-blend-mode
+$chat-mem-blur
+$chat-mem-filter
+
+$chat-input-color
+$chat-input-color-alpha
+$chat-input-blend-mode
+$chat-input-blur
+$chat-input-filter
+$chat-input-transition-duration
+
+$chat-input-active-color
+$chat-input-active-color-alpha
+$chat-input-active-blend-mode
+$chat-input-active-blur
+$chat-input-active-filter
+
+$chat-input-hover-color
+$chat-input-hover-color-alpha
+$chat-input-hover-blend-mode
+$chat-input-hover-blur
+$chat-input-hover-filter
+
+*/
+
+.da-chat {
+  &> .da-content > .da-chatContent {
+    @include chat_blur_main(
+      $bg_img: $background-image,
+      $bg_color: change-color($chat-bg-color, $alpha: $chat-bg-color-alpha),
+      $bg_blendmode: $chat-bg-blend-mode,
+      $blur: $chat-bg-blur,
+      $filter: $chat-bg-filter);
+  }
+
+  &> .da-title {
+    @include chat_blur_main(
+      $bg_img: $background-image,
+      $bg_color: change-color($chat-title-color, $alpha: $chat-title-color-alpha),
+      $bg_blendmode: $chat-title-blend-mode,
+      $blur: $chat-title-blur,
+      $filter: $chat-title-filter);
+  }
+
+  .da-members {
+    @include chat_blur_main(
+      $bg_img: $background-image,
+      $bg_color: change-color($chat-mem-color, $alpha: $chat-mem-color-alpha),
+      $bg_blendmode: $chat-mem-blend-mode,
+      $blur: $chat-mem-blur,
+      $filter: $chat-mem-filter);
+  }
+
+  .da-channelTextArea {
+    &>.da-inner {
+      textarea {
+        position: relative;
+        @include chat_blur_main(
+          $bg_img: $background-image,
+          $bg_color: change-color($chat-input-color, $alpha: $chat-input-color-alpha),
+          $bg_blendmode: $chat-input-blend-mode,
+          $blur: $chat-input-blur,
+          $filter: $chat-input-filter);
+      }
+    }
+  }
+
+  textarea::-webkit-input-placeholder {
+    color: change-color($chat-input-placeholder-color, $alpha: $chat-input-placeholder-color-alpha);
+  }
+
+  &>.da-inner:hover {
+    textarea {
+      @include chat_blur_scnd(
+        $bg_img: $background-image,
+        $bg_color: change-color($chat-input-hover-color, $alpha: $chat-input-hover-color-alpha),
+        $bg_blendmode: $chat-input-hover-blend-mode,
+        $blur: $chat-input-hover-blur,
+        $filter: $chat-input-hover-filter);
+    }
+  }
+}

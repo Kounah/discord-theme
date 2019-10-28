@@ -64,3 +64,21 @@
     }
   }
 }
+
+.da-sidebar .da-voiceUser {
+  &>.da-content {
+    @include --channel-bg();
+  }
+}
+
+.da-sidebar .da-voiceUser:hover {
+  &>.da-content {
+    @include --channel-hover-bg();
+  }
+}
+
+.da-sidebar .da-voiceUser.da-selected {
+  &>.da-content {
+    @include --channel-selected-bg();
+  }
+}

@@ -2,11 +2,11 @@ name: Chat
 components:
   - name: Base Theme
     $ref: base.scss
+  - name: Transparent
+    $ref: transparent.scss 
   - name: Themes
     oneof: true
-    selected: 2
+    selected: 1
     components:
       - $ref: alpha
       - $ref: blur
-      - name: Transparent
-        $ref: transparent.scss

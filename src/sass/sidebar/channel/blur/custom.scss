@@ -4,6 +4,7 @@
   z-index: 1;
   position: relative;
   overflow: hidden;
+  background: none;
   &::before {
     content: ''; 
     z-index: -1;
@@ -78,5 +79,23 @@
     &>.da-wrapper>.da-content {
       @include --channel-selected-bg();
     }
+  }
+}
+
+.da-sidebar .da-voiceUser {
+  &>.da-content {
+    @include --channel-bg();
+  }
+}
+
+.da-sidebar .da-voiceUser:hover {
+  &>.da-content {
+    @include --channel-hover-bg();
+  }
+}
+
+.da-sidebar .da-voiceUser.da-selected {
+  &>.da-content {
+    @include --channel-selected-bg();
   }
 }

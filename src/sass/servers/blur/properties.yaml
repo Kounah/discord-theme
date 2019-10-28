@@ -16,21 +16,21 @@ components:
       - name: server-blur-color
         default: black
       - name: server-blur-color-alpha
-        default: .2
+        default: .75
       - name: server-blur-radius
-        default: 2px
+        default: 4px
       - name: server-blur-filter
-        default: saturate(110%)
+        default: saturate(50%)
       - name: server-blur-background-blend-mode
         default: overlay
       - name: server-folder-blur-color
-        default: black
+        default: white
       - name: server-folder-blur-color-alpha
-        default: .3
+        default: 0
       - name: server-folder-blur-radius
-        default: 4px
+        default: 6px
       - name: server-folder-blur-filter
-        default: saturate(120%)
+        default: saturate(125%)
       - name: server-folder-blur-background-blend-mode
         default: overlay
   - name: Dark

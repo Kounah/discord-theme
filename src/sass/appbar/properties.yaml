@@ -1,0 +1,9 @@
+name: Appbar
+components:
+  - $ref: transparent.scss
+    name: Transparent
+  - oneof: true
+    selected: 1
+    components:
+      - $ref: alpha
+      - $ref: blur
