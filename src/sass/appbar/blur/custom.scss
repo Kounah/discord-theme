@@ -1,0 +1,82 @@
+@mixin appbar_blur_main(
+  $bg_img: none, 
+  $bg_color: transparent, 
+  $bg_blendmode: overlay,
+  $blur: 0px,
+  $filter: '',
+  $transition_duration: .2s) {
+
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: (-2*$blur);
+      left: (-2*$blur);
+      bottom: (-2*$blur);
+      right: (-2*$blur);
+      background-color: $bg_color;
+      background-image: $bg_img;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-blend-mode: $bg_blendmode;
+      filter: blur($blur) $filter;
+      transition: all $transition_duration ease-in-out;
+    }
+}
+
+@mixin appbar_blur_scnd(
+  $bg_img: none, 
+  $bg_color: transparent, 
+  $bg_blendmode: overlay,
+  $blur: 0px,
+  $filter: '',
+  $transition_duration: .2s) {
+
+    &::before {
+      top: (-2*$blur);
+      left: (-2*$blur);
+      bottom: (-2*$blur);
+      right: (-2*$blur);
+      background-color: $bg_color;
+      background-image: $bg_img;
+      background-blend-mode: $bg_blendmode;
+      filter: blur($blur) $filter;
+    }
+}
+
+@import "../transparent.scss";
+
+#app-mount > .da-titleBar {
+  @include appbar_blur_main(
+    $background-image,
+    change-color($appbar-bg-color, $alpha: $appbar-bg-color-alpha),
+    $appbar-bg-blend-mode,
+    $appbar-bg-blur,
+    $appbar-bg-filter);
+
+  .da-winButton {
+    @include appbar_blur_main(
+      $background-image,
+      change-color($appbar-btn-color, $alpha: $appbar-btn-color-alpha),
+      $appbar-btn-blend-mode,
+      $appbar-btn-blur,
+      $appbar-btn-filter,
+      $appbar-btn-transition-duration);
+
+    &:hover {
+      @include appbar_blur_main(
+        $background-image,
+        change-color($appbar-btn-hover-color, $alpha: $appbar-btn-hover-color-alpha),
+        $appbar-btn-hover-blend-mode,
+        $appbar-btn-hover-blur,
+        $appbar-btn-hover-filter)
+    }
+  }
+}
+

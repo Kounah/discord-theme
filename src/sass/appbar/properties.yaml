@@ -3,7 +3,7 @@ components:
   - $ref: transparent.scss
     name: Transparent
   - oneof: true
-    selected: 1
+    selected: 0
     components:
-      - $ref: alpha
+      # - $ref: alpha
       - $ref: blur

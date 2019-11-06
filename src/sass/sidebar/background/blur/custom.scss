@@ -7,10 +7,10 @@
     content: '';
     position: absolute;
     z-index: -1;
-    top: (-$sidebar-blur-radius);
-    left: (-$sidebar-blur-radius);
-    bottom: (-$sidebar-blur-radius);
-    right: (-$sidebar-blur-radius);
+    top: (-2*$sidebar-blur-radius);
+    left: (-2*$sidebar-blur-radius);
+    bottom: (-2*$sidebar-blur-radius);
+    right: (-2*$sidebar-blur-radius);
     background-color: change-color($sidebar-blur-color, $alpha: $sidebar-blur-color-alpha);
     background-image: $background-image;
     background-position: 50% 50%;

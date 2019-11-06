@@ -10,8 +10,8 @@ components:
     order: 3
   # - $ref: directmessages
   #   order: 3
-  # - $ref: appbar
-  #   order: 4
+  - $ref: appbar
+    order: 4
   - $ref: chat
     order: 5
   - name: Hide Blocked

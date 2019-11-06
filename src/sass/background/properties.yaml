@@ -11,7 +11,7 @@ components:
       - name: background-blend-mode
         default: overlay
       - name: background-image
-        default: 'http://kouna.io/kouna/iPad/discord/background.png'
+        default: 'http://kouna.io/kouna/work/2019/November/06/2019-11-06_15-47-45.jpg'
         format: 'url($)'
       - name: background-blur
         default: 0px

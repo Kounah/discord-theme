@@ -3,7 +3,9 @@ oneof: true
 selected: 0
 components:
   - $ref: custom.scss
-    $name: Custom
+    name: Custom
+    $dependencies:
+      - ../transparent.scss
     variables:
       - name: appbar-bg-color
         default: black
@@ -12,7 +14,7 @@ components:
       - name: appbar-bg-blend-mode
         default: overlay
       - name: appbar-bg-blur
-        default: 4px
+        default: 10px
       - name: appbar-bg-filter
         default: saturate(40%)
       - name: appbar-btn-color
@@ -22,7 +24,7 @@ components:
       - name: appbar-btn-blend-mode
         default: overlay
       - name: appbar-btn-blur
-        default: 4px
+        default: 10px
       - name: appbar-btn-filter
         default: saturate(75%)
       - name: appbar-btn-transition-duration
@@ -34,6 +36,6 @@ components:
       - name: appbar-btn-hover-blend-mode
         default: overlay
       - name: appbar-btn-hover-blur
-        default: 6px
+        default: 16px
       - name: appbar-btn-hover-filter
         default: saturate(125%)

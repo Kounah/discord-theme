@@ -6,10 +6,10 @@
   &::before {
     content: '';
     position: absolute;
-    top: (-$server-blur-radius);
-    left: (-$server-blur-radius);
-    bottom: (-$server-blur-radius);
-    right: (-$server-blur-radius);
+    top: (-2*$server-blur-radius);
+    left: (-2*$server-blur-radius);
+    bottom: (-2*$server-blur-radius);
+    right: (-2*$server-blur-radius);
     background-color: change-color($server-blur-color, $alpha: $server-blur-color-alpha);
     background-image: $background-image;
     background-attachment: fixed;
@@ -24,10 +24,10 @@
     &::before {
       content: '';
       position: absolute;
-      top: (-$server-folder-blur-radius);
-      left: (-$server-folder-blur-radius);
-      bottom: (-$server-folder-blur-radius);
-      right: (-$server-folder-blur-radius);
+      top: (-2*$server-folder-blur-radius);
+      left: (-2*$server-folder-blur-radius);
+      bottom: (-2*$server-folder-blur-radius);
+      right: (-2*$server-folder-blur-radius);
       background-color: change-color($server-folder-blur-color, $alpha: $server-folder-blur-color-alpha);
       background-image: $background-image;
       background-attachment: fixed;

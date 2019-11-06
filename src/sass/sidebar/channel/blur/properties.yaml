@@ -12,7 +12,7 @@ components:
           - name: sidebar-channel-color-alpha
             default: .5
           - name: sidebar-channel-blur-radius
-            default: 2px
+            default: 10px
           - name: sidebar-channel-filter
             default: saturate(50%)
           - name: sidebar-channel-background-blend-mode
@@ -24,7 +24,7 @@ components:
           - name: sidebar-channel-hover-color-alpha
             default: .75
           - name: sidebar-channel-hover-blur-radius
-            default: 4px
+            default: 16px
           - name: sidebar-channel-hover-filter
             default: saturate(75%)
           - name: sidebar-channel-selected-color
@@ -32,6 +32,6 @@ components:
           - name: sidebar-channel-selected-color-alpha
             default: 0
           - name: sidebar-channel-selected-blur-radius
-            default: 6px
+            default: 20px
           - name: sidebar-channel-selected-filter
             default: saturate(125%)

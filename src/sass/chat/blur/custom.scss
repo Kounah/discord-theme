@@ -14,10 +14,10 @@
       display: block;
       position: absolute;
       z-index: -1;
-      top: (-$blur);
-      left: (-$blur);
-      bottom: (-$blur);
-      right: (-$blur);
+      top: (-2*$blur);
+      left: (-2*$blur);
+      bottom: (-2*$blur);
+      right: (-2*$blur);
       background-color: $bg_color;
       background-image: $bg_img;
       background-attachment: fixed;
@@ -38,10 +38,10 @@
   $transition_duration: .2s) {
 
     &::before {
-      top: (-$blur);
-      left: (-$blur);
-      bottom: (-$blur);
-      right: (-$blur);
+      top: (-2*$blur);
+      left: (-2*$blur);
+      bottom: (-2*$blur);
+      right: (-2*$blur);
       background-color: $bg_color;
       background-image: $bg_img;
       background-blend-mode: $bg_blendmode;
@@ -109,7 +109,7 @@ $chat-input-hover-filter
       $filter: $chat-title-filter);
   }
 
-  .da-members {
+  .da-membersWrap > .da-scrollerWrap {
     @include chat_blur_main(
       $bg_img: $background-image,
       $bg_color: change-color($chat-mem-color, $alpha: $chat-mem-color-alpha),

@@ -13,7 +13,7 @@ components:
           - name: sidebar-blur-background-blend-mode
             default: overlay
           - name: sidebar-blur-radius
-            default: 2px
+            default: 10px
           - name: sidebar-blur-filter
             default: saturate(50%)
         $ref: custom.scss
